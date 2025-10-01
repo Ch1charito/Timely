@@ -37,6 +37,7 @@ header{
                 transition: background-color 0.2s;
                 &:hover{
                     background-color: #dc2626;
+                    cursor: pointer;
                 }
             }     
         }
