@@ -3,7 +3,7 @@ import { LoginComponent } from './frontend/login/login.component';
 import { HomescreenComponent } from './frontend/homescreen/homescreen.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'homescreen', pathMatch: 'full' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     {path: 'login', component: LoginComponent},
     {path: 'homescreen', component: HomescreenComponent },
 ];
