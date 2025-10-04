@@ -15,6 +15,7 @@ export class FirebaseService implements OnDestroy {
   unsubscribeTools: () => void;
 
   constructor() {
+    /* Get Materials from Firestore */
     this.unsubscribeMaterials = onSnapshot(
       collection(this.firestore, 'materials'),
       (materialsSnapshot) => {
@@ -28,6 +29,7 @@ export class FirebaseService implements OnDestroy {
       }
     );
 
+    /* Get Tools from Firestore */
     this.unsubscribeTools = onSnapshot(
       collection(this.firestore, 'tools'),
       (toolsSnapshot) => {
@@ -39,7 +41,7 @@ export class FirebaseService implements OnDestroy {
     );
   }
 
-  /* Setter for Material and Tool objects */
+  /* Setter for Material and Tool objects, convert the data to the correct type */
 
   setMaterialObject(id: string, obj: any): Material {
     return {
