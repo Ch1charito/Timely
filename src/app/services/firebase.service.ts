@@ -1,5 +1,12 @@
 import { Injectable, inject, OnDestroy } from '@angular/core';
-import { Firestore, collection, onSnapshot } from '@angular/fire/firestore';
+import {
+  Firestore,
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+} from '@angular/fire/firestore';
 import { Material } from '../interfaces/material.interface';
 import { Tool } from '../interfaces/tool.interface';
 
@@ -39,6 +46,37 @@ export class FirebaseService implements OnDestroy {
         });
       }
     );
+  }
+
+  /* Add Material and Tool to Database */
+
+  async addMaterialToDatabase(material: Material) {
+    await addDoc(collection(this.firestore, 'materials'), {
+      name: material.name,
+      description: material.description,
+      quantity: material.quantity,
+      unit: material.unit,
+      category: material.category,
+    });
+  }
+
+  async addToolToDatabase(tool: Tool) {
+    await addDoc(collection(this.firestore, 'tools'), {
+      name: tool.name,
+      description: tool.description,
+      category: tool.category,
+      inUse: tool.inUse,
+    });
+  }
+
+  /* Delete Material and Tool from Database */
+
+  async deleteMaterialFromDatabase(id: string) {
+    await deleteDoc(doc(this.firestore, 'materials', id));
+  }
+
+  async deleteToolFromDatabase(id: string) {
+    await deleteDoc(doc(this.firestore, 'tools', id));
   }
 
   /* Setter for Material and Tool objects, convert the data to the correct type */
