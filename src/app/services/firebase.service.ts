@@ -6,6 +6,7 @@ import {
   deleteDoc,
   doc,
   onSnapshot,
+  updateDoc,
 } from '@angular/fire/firestore';
 import { Material } from '../interfaces/material.interface';
 import { Tool } from '../interfaces/tool.interface';
@@ -77,6 +78,27 @@ export class FirebaseService implements OnDestroy {
 
   async deleteToolFromDatabase(id: string) {
     await deleteDoc(doc(this.firestore, 'tools', id));
+  }
+
+  /* Update Material and Tool in Database */
+
+  async updateMaterialInDatabase(id: string, material: Material) {
+    await updateDoc(doc(this.firestore, 'materials', id), {
+      name: material.name,
+      description: material.description,
+      quantity: material.quantity,
+      unit: material.unit,
+      category: material.category,
+    });
+  }
+
+  async updateToolInDatabase(id: string, tool: Tool) {
+    await updateDoc(doc(this.firestore, 'tools', id), {
+      name: tool.name,
+      description: tool.description,
+      category: tool.category,
+      inUse: tool.inUse,
+    });
   }
 
   /* Setter for Material and Tool objects, convert the data to the correct type */
