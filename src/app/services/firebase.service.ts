@@ -23,7 +23,6 @@ export class FirebaseService implements OnDestroy {
   unsubscribeMaterials: () => void;
   unsubscribeTools: () => void;
 
-
   /* Maybe not needed, but keeping for now
 
   private materialsSubject = new BehaviorSubject<Material[]>([]);
