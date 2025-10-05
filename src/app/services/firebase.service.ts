@@ -10,6 +10,7 @@ import {
 } from '@angular/fire/firestore';
 import { Material } from '../interfaces/material.interface';
 import { Tool } from '../interfaces/tool.interface';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,17 @@ export class FirebaseService implements OnDestroy {
   tools: Tool[] = [];
   unsubscribeMaterials: () => void;
   unsubscribeTools: () => void;
+
+
+  /* Maybe not needed, but keeping for now
+
+  private materialsSubject = new BehaviorSubject<Material[]>([]);
+  materials$: Observable<Material[]> = this.materialsSubject.asObservable();
+
+  private toolsSubject = new BehaviorSubject<Tool[]>([]);
+  tools$: Observable<Tool[]> = this.toolsSubject.asObservable();
+
+  */
 
   constructor() {
     /* Get Materials from Firestore */
