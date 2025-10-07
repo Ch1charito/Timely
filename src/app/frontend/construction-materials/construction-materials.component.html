@@ -9,6 +9,23 @@
                         <span>Back</span>
                     </button>
                 </div>
+                @if (firebaseService.materials.length > 0) {
+                <div class="list">
+                    @for (m of firebaseService.materials; track m.id) {
+                    <div class="row">
+                        <div class="name">{{ m.name }}</div>
+                        <div class="meta">
+                            <span>{{ m.quantity }} {{ m.unit }}</span>
+                            <span>• {{ m.category }}</span>
+                        </div>
+                        <div class="desc">{{ m.description }}</div>
+                    </div>
+                    }
+                </div>
+                }
+                @else {
+                    <p>No materials found</p>
+                }
             </div>
         </div>
     </div>
