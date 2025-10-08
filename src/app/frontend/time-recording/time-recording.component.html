@@ -27,6 +27,10 @@
                         </button>
                     </div>
                 </div>
+                <div class="worktime-header">
+                    <p>Date</p>
+                    <p>Worktime</p>
+                </div>
                 <div class="work-sessions">
                     @for (item of firebaseService.worksession; let i = $index; track item.id){
                         <div class="date-time">
