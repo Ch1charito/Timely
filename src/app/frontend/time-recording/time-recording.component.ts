@@ -11,6 +11,9 @@ import { FirebaseService } from '../../services/firebase.service';
   styleUrl: './time-recording.component.scss'
 })
 export class TimeRecordingComponent {
+  //#region firebase test
+firebaseService = inject(FirebaseService);
+//#endregion
 hours: number = 0;
 minutes: number = 0;
 seconds: number = 0;
@@ -59,13 +62,10 @@ endWork(): void {
     date: formattedDate,
     worktime: this.formattedTime
   };
-  this.workSessions.push(workSession);
+  this.firebaseService.addWorksessionToDatabase(workSession)
   this.hours = 0;
   this.minutes = 0;
   this.seconds = 0;
 }
-//#region firebase test
-firebaseService = inject(FirebaseService);
-//#endregion
 
 }

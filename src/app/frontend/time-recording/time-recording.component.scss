@@ -138,6 +138,13 @@
                 }
             }
         }
+        .work-sessions{
+            display: flex;
+            flex-direction: column;
+            .date-time{
+                gap: 18px;
+            }
+        }
     }   
 }
 

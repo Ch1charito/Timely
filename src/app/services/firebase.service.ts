@@ -75,7 +75,7 @@ export class FirebaseService implements OnDestroy {
     );
   }
 
-  /* Add Material and Tool to Database */
+  /* Add Material, Tool and Worksession to Database */
 
   async addMaterialToDatabase(material: Material) {
     await addDoc(collection(this.firestore, 'materials'), {
@@ -93,6 +93,13 @@ export class FirebaseService implements OnDestroy {
       description: tool.description,
       category: tool.category,
       inUse: tool.inUse,
+    });
+  }
+
+  async addWorksessionToDatabase(worksession: Worksession) {
+    await addDoc(collection(this.firestore, 'worksession'), {
+      date: worksession.date,
+      worktime: worksession.worktime
     });
   }
 

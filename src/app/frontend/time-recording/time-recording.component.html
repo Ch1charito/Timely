@@ -28,15 +28,11 @@
                     </div>
                 </div>
                 <div class="work-sessions">
-                    <h3>Letzte Arbeitssessions:</h3>
-                    <div *ngFor="let session of workSessions">
-                        {{ session.date }} - {{ session.worktime }}
-                    </div>
-                </div>
-                <div>
                     @for (item of firebaseService.worksession; let i = $index; track item.id){
-                        <span>{{ item.date}}</span>
-                        <span>{{ item.worktime}}</span>
+                        <div class="date-time">
+                            <span>{{ item.date}}</span>
+                            <span>{{ item.worktime}}</span>
+                        </div>
                     }
                 </div>
             </div>
