@@ -10,29 +10,34 @@
                     </button>
                 </div>
                 <div class="center-tracking">
-                    <div class="tracking">
-                    <label class="label">
-                        <p class="text">Hours</p>
-                        <input placeholder="00" class="input" value="">
-                    </label>
-                    <label class="label">
-                        <p class="text">Minutes</p>
-                        <input placeholder="00" class="input" value="">
-                    </label>
-                </div>
+                    <div class="timer">
+                        {{ formattedTime }}
+                    </div>
                 </div>
                 <div class="center">
                     <div class="btn-area">
-                        <button>
+                        <button (click)="startTimer()">
                             <span>Start Work</span>
                         </button>
-                        <button>
+                        <button (click)="stopTimer()">
                             <span>Pause Work</span>
                         </button>
-                        <button>
+                        <button (click)="endWork()">
                             <span>End Work</span>
                         </button>
                     </div>
+                </div>
+                <div class="worktime-header">
+                    <p>Date</p>
+                    <p>Worktime</p>
+                </div>
+                <div class="work-sessions">
+                    @for (item of firebaseService.worksession; let i = $index; track item.id){
+                        <div class="date-time">
+                            <span>{{ item.date}}</span>
+                            <span>{{ item.worktime}}</span>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

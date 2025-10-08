@@ -138,6 +138,28 @@
                 }
             }
         }
+        .worktime-header{
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+            p{
+                color: #1b0d0d;            
+                letter-spacing: -0.01em;   
+                font-size: 32px;           
+                font-weight: 700;          
+                line-height: 1.25;         
+                min-width: 18rem;
+            }
+        }
+        .work-sessions{
+            display: flex;
+            flex-direction: column;
+            .date-time{
+                width: 60%;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
     }   
 }
 
