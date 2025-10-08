@@ -11,13 +11,14 @@ import {
 import { Material } from '../interfaces/material.interface';
 import { Tool } from '../interfaces/tool.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Worksession } from '../interfaces/worksession.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService implements OnDestroy {
   firestore = inject(Firestore);
-
+  worksession : Worksession[] = [];
   materials: Material[] = [];
   tools: Tool[] = [];
   unsubscribeMaterials: () => void;
@@ -56,6 +57,20 @@ export class FirebaseService implements OnDestroy {
         toolsSnapshot.forEach((element) => {
           this.tools.push(this.setToolObject(element.id, element.data()));
         });
+      }
+    );
+
+    /* Get Worksessions from Firestore */
+    this.unsubscribeTools = onSnapshot(
+      collection(this.firestore, 'worksession'),
+      (worksessionSnapshot) => {
+        this.worksession = [];
+        worksessionSnapshot.forEach((element) => {
+          this.worksession.push(
+            this.setWorksessionObject(element.id, element.data())
+          );
+        });
+        this.sortByDate(this.worksession);
       }
     );
   }
@@ -135,8 +150,27 @@ export class FirebaseService implements OnDestroy {
     };
   }
 
+  setWorksessionObject(id: string, obj: any): Worksession{
+    return {
+      id: id,
+      date: obj.date,
+      worktime: obj.worktime,
+    };
+  }
+
   ngOnDestroy() {
     this.unsubscribeMaterials();
     this.unsubscribeTools();
+  }
+
+  /* help function to sort by date */
+  sortByDate(array: { date: string }[]) {
+    array.sort((a, b) => {
+      const [dayA, monthA, yearA] = a.date.split('.').map(Number);
+      const [dayB, monthB, yearB] = b.date.split('.').map(Number);
+      const dateA = new Date(yearA, monthA - 1, dayA);
+      const dateB = new Date(yearB, monthB - 1, dayB);
+      return dateB.getTime() - dateA.getTime();
+    });
   }
 }

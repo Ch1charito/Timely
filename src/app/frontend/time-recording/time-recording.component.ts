@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-time-recording',
@@ -63,5 +64,8 @@ endWork(): void {
   this.minutes = 0;
   this.seconds = 0;
 }
+//#region firebase test
+firebaseService = inject(FirebaseService);
+//#endregion
 
 }

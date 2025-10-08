@@ -33,6 +33,12 @@
                         {{ session.date }} - {{ session.worktime }}
                     </div>
                 </div>
+                <div>
+                    @for (item of firebaseService.worksession; let i = $index; track item.id){
+                        <span>{{ item.date}}</span>
+                        <span>{{ item.worktime}}</span>
+                    }
+                </div>
             </div>
         </div>
     </div>
