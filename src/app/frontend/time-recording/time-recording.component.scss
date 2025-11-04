@@ -139,7 +139,6 @@
             }
         }
         .worktime-header{
-            width: 60%;
             display: flex;
             justify-content: space-between;
             text-align: center;
@@ -155,10 +154,14 @@
         .work-sessions{
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             .date-time{
-                width: 60%;
+                text-align: center;
                 display: flex;
                 justify-content: space-between;
+                span{
+                    min-width: 18rem;
+                }
             }
         }
     }   
