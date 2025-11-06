@@ -38,9 +38,10 @@
                                 <td>{{ item.name }}</td>
                                 <td>{{ item.description }}</td>
                                 <td>
-                                <button>
-                                    <span>{{ item.inUse }}</span>
-                                </button>
+                                <label class="switch">
+                                    <input type="checkbox" [checked]="item.inUse" (change)="toggleInUse(item)">
+                                    <span class="slider"></span>
+                                </label>
                                 </td>
                             </tr>
                             }
