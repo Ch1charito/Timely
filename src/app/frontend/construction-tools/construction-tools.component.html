@@ -40,7 +40,9 @@
                                 <td>
                                 <label class="switch">
                                     <input type="checkbox" [checked]="item.inUse" (change)="toggleInUse(item)">
-                                    <span class="slider"></span>
+                                    <span class="slider" [ngClass]="{'in-use': item.inUse, 'available': !item.inUse}">
+                                        {{ item.inUse ? 'In Use' : 'Available' }}
+                                    </span>
                                 </label>
                                 </td>
                             </tr>
