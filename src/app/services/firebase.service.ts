@@ -12,6 +12,7 @@ import { Material } from '../interfaces/material.interface';
 import { Tool } from '../interfaces/tool.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Worksession } from '../interfaces/worksession.interface';
+import { Vacation } from '../interfaces/vacation.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -19,20 +20,14 @@ import { Worksession } from '../interfaces/worksession.interface';
 export class FirebaseService implements OnDestroy {
   firestore = inject(Firestore);
   worksession : Worksession[] = [];
+  vacation : Vacation[] = [];
   materials: Material[] = [];
   tools: Tool[] = [];
   unsubscribeMaterials: () => void;
   unsubscribeTools: () => void;
+  unsubscribeWorksessions: () => void;
+  unsubscribeVacations: () => void;
 
-  /* Maybe not needed, but keeping for now
-
-  private materialsSubject = new BehaviorSubject<Material[]>([]);
-  materials$: Observable<Material[]> = this.materialsSubject.asObservable();
-
-  private toolsSubject = new BehaviorSubject<Tool[]>([]);
-  tools$: Observable<Tool[]> = this.toolsSubject.asObservable();
-
-  */
 
   constructor() {
     /* Get Materials from Firestore */
@@ -61,7 +56,7 @@ export class FirebaseService implements OnDestroy {
     );
 
     /* Get Worksessions from Firestore */
-    this.unsubscribeTools = onSnapshot(
+    this.unsubscribeWorksessions = onSnapshot(
       collection(this.firestore, 'worksession'),
       (worksessionSnapshot) => {
         this.worksession = [];
@@ -71,6 +66,19 @@ export class FirebaseService implements OnDestroy {
           );
         });
         this.sortByDate(this.worksession);
+      }
+    );
+
+    /* Get Vacations from Firestore */
+    this.unsubscribeVacations = onSnapshot(
+      collection(this.firestore, 'vacation'),
+      (vacationSnapshot) => {
+        this.vacation = [];
+        vacationSnapshot.forEach((element) => {
+          this.vacation.push(
+            this.setVacationObject(element.id, element.data())
+          );
+        });
       }
     );
   }
@@ -100,6 +108,15 @@ export class FirebaseService implements OnDestroy {
     await addDoc(collection(this.firestore, 'worksession'), {
       date: worksession.date,
       worktime: worksession.worktime
+    });
+  }
+
+  async addVacationToDatabase(vacation: Vacation) {
+    await addDoc(collection(this.firestore, 'vacation'), {
+      vacStart: vacation.vacStart,
+      vacEnd: vacation.vacEnd,
+      reason: vacation.reason,
+      approved: vacation.approved,
     });
   }
 
@@ -165,9 +182,22 @@ export class FirebaseService implements OnDestroy {
     };
   }
 
+  setVacationObject(id: string, obj: any): Vacation{
+    return {
+      id: id,
+      vacStart: obj.vacStart,
+      vacEnd: obj.vacEnd,
+      reason: obj.reason,
+      approved: obj.approved
+      
+    };
+  }
+
   ngOnDestroy() {
     this.unsubscribeMaterials();
     this.unsubscribeTools();
+    this.unsubscribeWorksessions();
+    this.unsubscribeVacations();
   }
 
   /* help function to sort by date */
