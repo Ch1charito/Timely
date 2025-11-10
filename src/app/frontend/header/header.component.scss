@@ -25,7 +25,7 @@ header{
                 }
             }
             .logout-btn{
-                background-color: #ef4444;
+                background-color: #dc2626;
                 color: #ffffff;
                 font-weight: 600;
                 padding-top: 0.5rem;
@@ -37,7 +37,7 @@ header{
                 align-items: center;
                 transition: background-color 0.2s;
                 &:hover{
-                    background-color: #dc2626;
+                    background-color: #ef4444;
                     cursor: pointer;
                 }
             }     
