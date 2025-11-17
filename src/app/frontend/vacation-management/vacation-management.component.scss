@@ -127,6 +127,33 @@
                     }
                 }
             }
+            .input-days{
+                display: flex;
+                flex-direction: column;
+                .days-header{
+                    color: #1b0d0d;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    line-height: 1.5rem;
+                    padding-bottom: 0.5rem;
+                }
+                .days-input{
+                        min-width: 0;
+                        flex: 1 1 0%;
+                        resize: none;
+                        overflow: hidden;
+                        border-radius: 0.5rem;
+                        color: #1b0d0d;
+                        border: 1px solid #e7cfcf;
+                        background-color: #fcf8f8;
+                        height: 3.5rem;
+                        padding: 15px;
+                        font-size: 1rem;
+                        font-weight: 400;
+                        line-height: 1.5rem;
+                        cursor: pointer;
+                }
+            }
             .input-reason{
                 display: flex;
                 flex-direction: column;
