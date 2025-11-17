@@ -46,31 +46,27 @@
                         </button>
                     </div>
                 </form>
-                <!-- <div class="form-section">
-                    <div class="input-time">
-                        <label class="label">
-                            <p class="label-header">Start Date</p>
-                            <input class="label-input" type="date"/>
-                        </label>
-                        <label class="label">
-                            <p class="label-header">End Date</p>
-                            <input class="label-input" type="date"/>
-                        </label>
-                    </div>
-                    <label class="input-days">
-                        <p class="days-header">Days Needed</p>
-                        <input class="days-input" type="number" min="1" placeholder="1"/>
-                    </label>
-                    <label class="input-reason">
-                        <p class="reason-header">Reason</p>
-                        <textarea class="reason-text" placeholder="Add reason"></textarea>
-                    </label>
+                <div class="table-one">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Duration</th>
+                                <th>Reason</th>
+                                <th>Approved</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of firebaseService.vacation; track item.id){
+                                <tr>
+                                    <td>{{ item.vacStart }} to {{ item.vacEnd }}</td>
+                                    <td>{{ item.reason }}</td>
+                                    <td>{{ item.approved }}</td>
+                                </tr>
+                            }
+                            
+                        </tbody>
+                    </table>
                 </div>
-                <div class="form-btn">
-                    <button class="request-btn">
-                        <span>Request Vacation</span>
-                    </button>
-                </div> -->
             </div>
         </div>
     </div>
