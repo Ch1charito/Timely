@@ -19,7 +19,34 @@
                         <p class="container-info">5</p>
                     </div>
                 </div>
-                <div class="form-section">
+                <form #vacForm="ngForm" (ngSubmit)="submitVacation(vacForm)">
+                    <div class="form-section">
+                        <div class="input-time">
+                            <label class="label">
+                                <p class="label-header">Start Date</p>
+                                <input class="label-input" type="date" name="vacStart" required [(ngModel)]="vacation.vacStart"/>
+                            </label>
+                            <label class="label">
+                                <p class="label-header">End Date</p>
+                                <input class="label-input" type="date" name="vacEnd" required [(ngModel)]="vacation.vacEnd"/>
+                            </label>
+                        </div>
+                        <label class="input-days">
+                            <p class="days-header">Days Needed</p>
+                            <input class="days-input" type="number" min="1" placeholder="1" name="daysNeeded" required [(ngModel)]="vacation.daysNeeded"/>
+                        </label>
+                        <label class="input-reason">
+                            <p class="reason-header">Reason</p>
+                            <textarea class="reason-text" placeholder="Add reason" name="reason" [(ngModel)]="vacation.reason"></textarea>
+                        </label>
+                    </div>
+                    <div class="form-btn">
+                        <button class="request-btn">
+                            <span>Request Vacation</span>
+                        </button>
+                    </div>
+                </form>
+                <!-- <div class="form-section">
                     <div class="input-time">
                         <label class="label">
                             <p class="label-header">Start Date</p>
@@ -30,6 +57,10 @@
                             <input class="label-input" type="date"/>
                         </label>
                     </div>
+                    <label class="input-days">
+                        <p class="days-header">Days Needed</p>
+                        <input class="days-input" type="number" min="1" placeholder="1"/>
+                    </label>
                     <label class="input-reason">
                         <p class="reason-header">Reason</p>
                         <textarea class="reason-text" placeholder="Add reason"></textarea>
@@ -39,7 +70,7 @@
                     <button class="request-btn">
                         <span>Request Vacation</span>
                     </button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

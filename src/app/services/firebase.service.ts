@@ -115,6 +115,7 @@ export class FirebaseService implements OnDestroy {
     await addDoc(collection(this.firestore, 'vacation'), {
       vacStart: vacation.vacStart,
       vacEnd: vacation.vacEnd,
+      daysNeeded: vacation.daysNeeded,
       reason: vacation.reason,
       approved: vacation.approved,
     });
@@ -187,9 +188,9 @@ export class FirebaseService implements OnDestroy {
       id: id,
       vacStart: obj.vacStart,
       vacEnd: obj.vacEnd,
+      daysNeeded: obj.daysNeeded,
       reason: obj.reason,
       approved: obj.approved
-      
     };
   }
 
