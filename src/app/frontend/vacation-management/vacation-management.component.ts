@@ -45,4 +45,12 @@ export class VacationManagementComponent {
     this.vacation.approved = false;
   }
 
+  get daysAlreadyTaken(): number {
+    return this.firebaseService.getDaysAlreadyTaken();
+  }
+
+  get remainingDays(): number {
+    const total = 27;
+    return total - this.daysAlreadyTaken;
+  }
 }
