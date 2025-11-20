@@ -27,17 +27,23 @@
                         </button>
                     </div>
                 </div>
-                <div class="worktime-header">
-                    <p>Date</p>
-                    <p>Worktime</p>
-                </div>
-                <div class="work-sessions">
-                    @for (item of firebaseService.worksession; let i = $index; track item.id){
-                        <div class="date-time">
-                            <span>{{ item.date}}</span>
-                            <span>{{ item.worktime}}</span>
-                        </div>
-                    }
+                <div class="table-one">
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Date</th>
+                            <th>Worktime</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of firebaseService.worksession; track item.id) {
+                            <tr>
+                                <td>{{ item.date }}</td>
+                                <td>{{ item.worktime }}</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

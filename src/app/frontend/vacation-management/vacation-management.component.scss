@@ -194,6 +194,7 @@
             display: flex;
             justify-content: center;
             .request-btn{
+                border: none;
                 display: flex;
                 min-width: 84px;
                 max-width: 480px;
@@ -205,6 +206,7 @@
                 height: 2.5rem;
                 padding-left: 1rem;
                 padding-right: 1rem;
+                margin-bottom: 5rem;
                 background-color: #dc2626;
                 color: #ffffff;
                 font-size: 0.875rem;

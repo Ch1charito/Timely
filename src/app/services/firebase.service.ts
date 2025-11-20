@@ -211,4 +211,13 @@ export class FirebaseService implements OnDestroy {
       return dateB.getTime() - dateA.getTime();
     });
   }
+
+  /* help function to get vacation days already taken*/
+  getDaysAlreadyTaken(): number {
+    let total = 0;
+    this.vacation.forEach(vac => {
+      total += vac.daysNeeded;
+    });
+    return total;
+  }
 }
