@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { FirebaseService } from '../../services/firebase.service';
 import { Vacation } from '../../interfaces/vacation.interface';
 import { FormsModule, NgForm } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-vacation-management',
-  imports: [HeaderComponent, RouterModule, FormsModule],
+  imports: [HeaderComponent, RouterModule, FormsModule, CommonModule],
   templateUrl: './vacation-management.component.html',
   styleUrl: './vacation-management.component.scss'
 })

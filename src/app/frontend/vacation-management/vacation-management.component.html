@@ -60,7 +60,10 @@
                                 <tr>
                                     <td>{{ item.vacStart }} to {{ item.vacEnd }}</td>
                                     <td>{{ item.reason }}</td>
-                                    <td>{{ item.approved }}</td>
+                                    <td><!-- {{ item.approved }} -->
+                                        <span *ngIf="item.approved">✔️</span>
+                                        <span *ngIf="!item.approved">❌</span>
+                                    </td>
                                 </tr>
                             }
                             
