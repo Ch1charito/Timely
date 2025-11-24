@@ -73,6 +73,21 @@
                     padding: 8px 16px;
                     font-size: 0.875rem;
                     color: #1b0d0d;
+                    .icon-btn {
+                        background: none; 
+                        border: none;
+                        border-radius: 4px;
+                        padding: 6px;
+                        cursor: pointer;
+                        transition: color 0.2s, transform 0.1s;
+                        &:hover {
+                            background: rgba(0,0,0,0.05);
+                            transform: scale(1.1);
+                        }
+                        &:focus {
+                            outline: none;
+                        }
+                        }
                     }
                 }         
                 }
