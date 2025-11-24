@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { RouterModule } from '@angular/router';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-construction-materials',
@@ -9,5 +10,6 @@ import { RouterModule } from '@angular/router';
   styleUrl: './construction-materials.component.scss'
 })
 export class ConstructionMaterialsComponent {
+  firebaseService = inject(FirebaseService);
 
 }
