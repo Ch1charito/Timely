@@ -60,8 +60,16 @@
                 font-size: 14px;
                 font-family: "Poppins", sans-serif;
                 font-weight: 500;
-                color: #1b0d0d;
+                color: #0f3a20;                    
+                background-color: #d7f5df;         
+                border: 1px solid #b6e9c7;         
+                border-radius: 6px;                
                 cursor: pointer;
+                transition: 0.2s ease;
+                &:hover {
+                    background-color: #c6efcf;     
+                    border-color: #a1e1b8;
+                }
             }
         }
         .table-one{
