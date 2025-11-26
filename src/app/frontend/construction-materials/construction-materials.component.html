@@ -9,6 +9,10 @@
                         <span>Back</span>
                     </button>
                 </div>
+                <div class="add">
+                    <button (click)="openAddOverlay()">+ Add Material</button>
+                </div>
+                <app-add-material-overlay *ngIf="showAddOverlay" (close)="closeAddOverlay()"></app-add-material-overlay>
                 <div class="table-one">
                     <table>
                         <thead>

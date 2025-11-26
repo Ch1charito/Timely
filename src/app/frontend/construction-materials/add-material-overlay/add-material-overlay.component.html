@@ -1,0 +1,33 @@
+<div class="overlay">
+    <div class="overlay-content">
+        <button class="close-btn" (click)="onClose()">✖</button>
+        <form #materialForm="ngForm">
+            <label>
+                <p>Name</p>
+                <input type="text" name="name" required/>
+            </label>
+
+            <label>
+                <p>Description</p>
+                <input type="text" name="description" required/>
+            </label>
+
+            <label>
+                <p>Quantity</p>
+                <input type="number" name="quantity" min="0" required/>
+            </label>
+
+            <label>
+                <p>Unit</p>
+                <input type="text" name="unit"/>
+            </label>
+
+            <label>
+                <p>Category</p>
+                <input type="text" name="category"/>
+            </label>
+
+            <button type="submit">Add Material</button>
+        </form>
+    </div>
+</div>
