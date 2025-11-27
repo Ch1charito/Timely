@@ -4,23 +4,38 @@
         <form #materialForm="ngForm" (ngSubmit)="submitMaterial(materialForm)">
             <label>
                 <p>Name</p>
-                <input type="text" name="name" required [(ngModel)]="material.name"/>
+                <input type="text" name="name" required [(ngModel)]="material.name" #nameCtrl="ngModel"/>
+                <small class="error" *ngIf="nameCtrl.invalid && nameCtrl.touched">
+                    Name is required
+                </small>
             </label>
             <label>
                 <p>Description</p>
-                <input type="text" name="description" required [(ngModel)]="material.description"/>
+                <input type="text" name="description" required [(ngModel)]="material.description" #descCtrl="ngModel"/>
+                <small class="error" *ngIf="descCtrl.invalid && descCtrl.touched">
+                    Description is required
+                </small>
             </label>
             <label>
                 <p>Quantity</p>
-                <input type="number" name="quantity" min="0" required [(ngModel)]="material.quantity"/>
+                <input type="number" name="quantity" min="0" required [(ngModel)]="material.quantity" #qtyCtrl="ngModel"/>
+                <small class="error" *ngIf="qtyCtrl.invalid && qtyCtrl.touched">
+                    Quantity is required
+                </small>
             </label>
             <label>
                 <p>Unit</p>
-                <input type="text" name="unit" required [(ngModel)]="material.unit"/>
+                <input type="text" name="unit" required [(ngModel)]="material.unit" #unitCtrl="ngModel"/>
+                <small class="error" *ngIf="unitCtrl.invalid && unitCtrl.touched">
+                    Unit is required
+                </small>
             </label>
             <label>
                 <p>Category</p>
-                <input type="text" name="category" required [(ngModel)]="material.category"/>
+                <input type="text" name="category" required [(ngModel)]="material.category" #catCtrl="ngModel"/>
+                <small class="error" *ngIf="catCtrl.invalid && catCtrl.touched">
+                    Category is required
+                </small>
             </label>
             <button type="submit">Add Material</button>
         </form>
