@@ -16,7 +16,7 @@ export class AddMaterialOverlayComponent {
 
   material: Material = {
     name: '',
-    description: '',
+    description: 'No data',
     quantity: 0,
     unit: '',
     category: '',
