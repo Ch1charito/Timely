@@ -34,7 +34,7 @@ export class ConstructionMaterialsComponent {
   }
 
   deleteMaterial(id: string | undefined) {
-    if (!id) return; // Falls keine ID vorhanden ist, abbrechen
+    if (!id) return;
     this.firebaseService.deleteMaterialFromDatabase(id);
   }
 

@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
+import { FirebaseService } from '../../../services/firebase.service';
+import { Material } from '../../../interfaces/material.interface';
 
 @Component({
   selector: 'app-add-material-overlay',
@@ -8,8 +10,22 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './add-material-overlay.component.scss'
 })
 export class AddMaterialOverlayComponent {
+  firebaseService = inject(FirebaseService);
   @Output() close = new EventEmitter<void>();
 
+  material: Material = {
+    name: '',
+    description: '',
+    quantity: 0,
+    unit: '',
+    category: '',
+  };
+
+  async submitMaterial(form: NgForm) {
+    if (form.invalid) return;
+    await this.firebaseService.addMaterialToDatabase(this.material);
+    this.close.emit();
+  }
 
   onClose() {
     this.close.emit();
