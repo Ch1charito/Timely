@@ -33,4 +33,9 @@ export class ConstructionMaterialsComponent {
     this.showEditOverlay = false;
   }
 
+  deleteMaterial(id: string | undefined) {
+    if (!id) return; // Falls keine ID vorhanden ist, abbrechen
+    this.firebaseService.deleteMaterialFromDatabase(id);
+  }
+
 }
