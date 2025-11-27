@@ -5,6 +5,7 @@ import { FirebaseService } from '../../services/firebase.service';
 import { AddMaterialOverlayComponent } from "./add-material-overlay/add-material-overlay.component";
 import { CommonModule } from '@angular/common';
 import { EditMaterialOverlayComponent } from "./edit-material-overlay/edit-material-overlay.component";
+import { Material } from '../../interfaces/material.interface';
 
 @Component({
   selector: 'app-construction-materials',
@@ -16,6 +17,7 @@ export class ConstructionMaterialsComponent {
   firebaseService = inject(FirebaseService);
   showAddOverlay: boolean = false;
   showEditOverlay: boolean = false;
+  editingMaterial: Material | null = null;
 
   openAddOverlay() {
     this.showAddOverlay = true;
@@ -25,7 +27,8 @@ export class ConstructionMaterialsComponent {
     this.showAddOverlay = false;
   }
 
-  openEditOverlay() {
+  openEditOverlay(item: Material) {
+    this.editingMaterial = { ...item };
     this.showEditOverlay = true;
   }
 

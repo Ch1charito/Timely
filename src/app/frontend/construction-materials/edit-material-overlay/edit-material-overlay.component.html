@@ -1,22 +1,22 @@
-<div class="overlay">
+<div class="overlay" *ngIf="editingMaterial">
     <div class="overlay-content">
         <button class="close-btn" (click)="onClose()">✖</button>
-        <form #materialForm="ngForm">
+        <form #materialForm="ngForm" (ngSubmit)="saveEdit()">
             <label>
                 <p>Material</p>
-                <input type="text" name="name" required/>
+                <input type="text" name="name" required [(ngModel)]="editingMaterial.name"/>
             </label>
             <label>
                 <p>Quantity</p>
-                <input type="number" name="quantity" min="0" required/>
+                <input type="number" name="quantity" min="0" required [(ngModel)]="editingMaterial.quantity"/>
             </label>
             <label>
                 <p>Unit</p>
-                <input type="text" name="unit"/>
+                <input type="text" name="unit" [(ngModel)]="editingMaterial.unit"/>
             </label>
             <label>
                 <p>Category</p>
-                <input type="text" name="category"/>
+                <input type="text" name="category" [(ngModel)]="editingMaterial.category"/>
             </label>
             <button type="submit" class="save-btn">Save</button>
             <button type="button" class="cancel-btn" (click)="onClose()">Cancel</button>

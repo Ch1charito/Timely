@@ -13,7 +13,7 @@
                     <button (click)="openAddOverlay()">+ Add Material</button>
                 </div>
                 <app-add-material-overlay *ngIf="showAddOverlay" (close)="closeAddOverlay()"></app-add-material-overlay>
-                <app-edit-material-overlay *ngIf="showEditOverlay" (close)="closeEditOverlay()"></app-edit-material-overlay>
+                <app-edit-material-overlay *ngIf="showEditOverlay" [editingMaterial]="editingMaterial" (close)="closeEditOverlay()"></app-edit-material-overlay>
                 <div class="table-one">
                     <table>
                         <thead>
@@ -31,7 +31,7 @@
                                 <td>{{ item.quantity }}</td>
                                 <td>{{ item.unit }}</td>
                                 <td class="actions">
-                                <button class="icon-btn" (click)="openEditOverlay()">
+                                <button class="icon-btn" (click)="openEditOverlay(item)">
                                     ✏️
                                 </button>
                                 <button class="icon-btn" (click)="deleteMaterial(item.id)">
