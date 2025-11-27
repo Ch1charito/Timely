@@ -86,6 +86,10 @@
             &:hover {
             opacity: 0.9;
             }
+            &:disabled {
+                opacity: 0.5;      /* Button wird ausgegraut */
+                cursor: not-allowed; /* Maus zeigt "nicht klickbar" */
+            }
         }
     }
 }
