@@ -212,7 +212,7 @@
             display: flex;
             justify-content: center;
             .request-btn{
-                border: none;
+                border: 1px solid #b6d9e9; 
                 display: flex;
                 min-width: 84px;
                 max-width: 480px;
@@ -225,22 +225,22 @@
                 padding-left: 1rem;
                 padding-right: 1rem;
                 margin-bottom: 5rem;
-                background-color: #dc2626;
-                color: #ffffff;
+                background-color: #dbefff;  
+                color: #0f3a20;             
                 font-size: 0.875rem;
                 font-weight: 700;
                 line-height: 1.5rem;
                 letter-spacing: 0.015em;
-                &:hover{
-                    background-color: #ef4444;
+                &:hover {
+                    background-color: #c9e7ff;  
                     cursor: pointer;
                 }
                 &:disabled {
                     opacity: 0.5;
                     cursor: not-allowed;
-                    background-color: #dc2626;
+                    background-color: #dbefff; 
                 }
-                span{
+                span {
                     overflow: hidden;
                     white-space: nowrap;
                     text-overflow: ellipsis;

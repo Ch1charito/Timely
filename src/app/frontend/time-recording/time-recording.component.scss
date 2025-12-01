@@ -112,8 +112,14 @@
                 padding-bottom: 0.75rem;
                 max-width: 480px;
                 justify-content: center;
-                button{
-                    border: none;
+                .start-btn{
+                    border: 1px solid #b6e9c7;     
+                    background-color: #d7f5df;     
+                    color: #0f3a20;                
+                    font-family: "Poppins", sans-serif;
+                    font-weight: 500;
+                    font-size: 14px;
+                    transition: 0.2s ease;
                     display: flex;
                     min-width: 84px;
                     max-width: 480px;
@@ -121,22 +127,76 @@
                     align-items: center;
                     justify-content: center;
                     overflow: hidden;
-                    border-radius: 0.5rem;
+                    border-radius: 6px;
                     height: 2.5rem;
                     padding-left: 1rem;
                     padding-right: 1rem;
-                    background-color: #ec1313;
-                    color: #fcf8f8;
-                    font-size: 0.875rem;
-                    font-weight: 700;
-                    line-height: 1.5;
-                    letter-spacing: 0.015em;
                     flex-grow: 1;
-                    &:hover{
-                        background-color: #ef4444;
-                        cursor: pointer;
+                    &:hover {
+                        background-color: #c6efcf; 
+                        border-color: #a1e1b8;     
                     }
-                    span{
+                    span {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+                .stop-btn{
+                    border: 1px solid #b6d9e9;     
+                    background-color: #dbefff;     
+                    color: #0f3a20;                
+                    font-family: "Poppins", sans-serif;
+                    font-weight: 500;
+                    font-size: 14px;
+                    transition: 0.2s ease;
+                    display: flex;
+                    min-width: 84px;
+                    max-width: 480px;
+                    cursor: pointer;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    border-radius: 6px;
+                    height: 2.5rem;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    flex-grow: 1;
+                    &:hover {
+                        background-color: #c9e7ff; 
+                        border-color: #a7cde3;     
+                    }
+                    span {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+                .end-btn{
+                    border: 1px solid #e9b6b6;     
+                    background-color: #ffe0e0;     
+                    color: #0f3a20;                
+                    font-family: "Poppins", sans-serif;
+                    font-weight: 500;
+                    font-size: 14px;
+                    transition: 0.2s ease;
+                    display: flex;
+                    min-width: 84px;
+                    max-width: 480px;
+                    cursor: pointer;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    border-radius: 6px;
+                    height: 2.5rem;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    flex-grow: 1;
+                    &:hover {
+                        background-color: #ffd1d1; 
+                        border-color: #e3a1a1;     
+                    }
+                    span {
                         overflow: hidden;
                         text-overflow: ellipsis;
                         white-space: nowrap;
