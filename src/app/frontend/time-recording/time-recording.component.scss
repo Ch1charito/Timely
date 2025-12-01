@@ -202,36 +202,6 @@
                         white-space: nowrap;
                     }
                 }
-                button{
-                    border: none;
-                    display: flex;
-                    min-width: 84px;
-                    max-width: 480px;
-                    cursor: pointer;
-                    align-items: center;
-                    justify-content: center;
-                    overflow: hidden;
-                    border-radius: 0.5rem;
-                    height: 2.5rem;
-                    padding-left: 1rem;
-                    padding-right: 1rem;
-                    background-color: #ec1313;
-                    color: #fcf8f8;
-                    font-size: 0.875rem;
-                    font-weight: 700;
-                    line-height: 1.5;
-                    letter-spacing: 0.015em;
-                    flex-grow: 1;
-                    &:hover{
-                        background-color: #ef4444;
-                        cursor: pointer;
-                    }
-                    span{
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                    }
-                }
             }
         }
         .table-one{
