@@ -28,24 +28,36 @@
                         <div class="input-time">
                             <label class="label">
                                 <p class="label-header">Start Date</p>
-                                <input class="label-input" type="date" name="vacStart" required [(ngModel)]="vacation.vacStart"/>
+                                <input class="label-input" type="date" name="vacStart" required [(ngModel)]="vacation.vacStart" #startCtrl="ngModel"/>
+                                <small class="error" *ngIf="startCtrl.invalid && startCtrl.touched">
+                                    Start Date is required
+                                </small>
                             </label>
                             <label class="label">
                                 <p class="label-header">End Date</p>
-                                <input class="label-input" type="date" name="vacEnd" required [(ngModel)]="vacation.vacEnd"/>
+                                <input class="label-input" type="date" name="vacEnd" required [(ngModel)]="vacation.vacEnd" #endCtrl="ngModel"/>
+                                <small class="error" *ngIf="endCtrl.invalid && endCtrl.touched">
+                                    End Date is required
+                                </small>
                             </label>
                         </div>
                         <label class="input-days">
                             <p class="days-header">Days Needed</p>
-                            <input class="days-input" type="number" min="1" placeholder="1" name="daysNeeded" required [(ngModel)]="vacation.daysNeeded"/>
+                            <input class="days-input" type="number" min="1" placeholder="1" name="daysNeeded" required [(ngModel)]="vacation.daysNeeded" #daysCtrl="ngModel"/>
+                            <small class="error" *ngIf="daysCtrl.invalid && daysCtrl.touched">
+                                Please enter number of days (min 1)
+                            </small>
                         </label>
                         <label class="input-reason">
                             <p class="reason-header">Reason</p>
-                            <textarea class="reason-text" placeholder="Add reason" name="reason" [(ngModel)]="vacation.reason"></textarea>
+                            <textarea class="reason-text" placeholder="Add reason" name="reason" required [(ngModel)]="vacation.reason" #reasonCtrl="ngModel"></textarea>
+                            <small class="error" *ngIf="reasonCtrl.invalid && reasonCtrl.touched">
+                                Reason is required
+                            </small>
                         </label>
                     </div>
                     <div class="form-btn">
-                        <button class="request-btn">
+                        <button class="request-btn" type="submit" [disabled]="vacForm.invalid">
                             <span>Request Vacation</span>
                         </button>
                     </div>
