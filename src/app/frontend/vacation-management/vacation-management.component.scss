@@ -235,6 +235,11 @@
                     background-color: #ef4444;
                     cursor: pointer;
                 }
+                &:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                    background-color: #dc2626;
+                }
                 span{
                     overflow: hidden;
                     white-space: nowrap;
