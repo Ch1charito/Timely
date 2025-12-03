@@ -92,6 +92,9 @@
                     padding: 8px 16px;
                     font-size: 0.875rem;
                     color: #1b0d0d;
+                    @media(max-width:435px){
+                        padding: 8px 0px;
+                    }
                     .icon-btn {
                         background: none; 
                         border: none;
