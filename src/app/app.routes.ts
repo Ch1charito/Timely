@@ -5,6 +5,8 @@ import { TimeRecordingComponent } from './frontend/time-recording/time-recording
 import { VacationManagementComponent } from './frontend/vacation-management/vacation-management.component';
 import { ConstructionMaterialsComponent } from './frontend/construction-materials/construction-materials.component';
 import { ConstructionToolsComponent } from './frontend/construction-tools/construction-tools.component';
+import { ImpressumComponent } from './frontend/impressum/impressum.component';
+import { PrivacyPolicyComponent } from './frontend/privacy-policy/privacy-policy.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -14,4 +16,6 @@ export const routes: Routes = [
     {path: 'vacation', component: VacationManagementComponent},
     {path: 'materials', component: ConstructionMaterialsComponent},
     {path: 'tools', component: ConstructionToolsComponent},
+    {path: 'impressum', component: ImpressumComponent},
+    {path: 'privacy-policy', component: PrivacyPolicyComponent}
 ];
