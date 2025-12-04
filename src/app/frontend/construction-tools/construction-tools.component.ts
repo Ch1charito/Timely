@@ -15,10 +15,7 @@ export class ConstructionToolsComponent {
   firebaseService = inject(FirebaseService);
 
   toggleInUse(item: Tool) {
-    // Status umschalten
     item.inUse = !item.inUse;
-
-    // Update in Firebase
     this.firebaseService.updateToolInDatabase(item.id!, item);
   }
 

@@ -11,13 +11,11 @@ import { FirebaseService } from '../../services/firebase.service';
   styleUrl: './time-recording.component.scss'
 })
 export class TimeRecordingComponent {
-  //#region firebase test
+
 firebaseService = inject(FirebaseService);
-//#endregion
 hours: number = 0;
 minutes: number = 0;
 seconds: number = 0;
-
 intervalId: any;  
 isRunning: boolean = false;
 workSessions: { date: string; worktime: string }[] = [];

@@ -24,7 +24,6 @@ export class EditMaterialOverlayComponent {
     this.onClose();
   }
 
-
   onClose() {
     this.close.emit();
   }

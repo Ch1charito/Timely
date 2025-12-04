@@ -40,5 +40,4 @@ export class ConstructionMaterialsComponent {
     if (!id) return;
     this.firebaseService.deleteMaterialFromDatabase(id);
   }
-
 }
