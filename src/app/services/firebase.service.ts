@@ -84,7 +84,6 @@ export class FirebaseService implements OnDestroy {
   }
 
   /* Add Material, Tool and Worksession to Database */
-
   async addMaterialToDatabase(material: Material) {
     await addDoc(collection(this.firestore, 'materials'), {
       name: material.name,
@@ -122,7 +121,6 @@ export class FirebaseService implements OnDestroy {
   }
 
   /* Delete Material and Tool from Database */
-
   async deleteMaterialFromDatabase(id: string) {
     await deleteDoc(doc(this.firestore, 'materials', id));
   }
@@ -132,7 +130,6 @@ export class FirebaseService implements OnDestroy {
   }
 
   /* Update Material and Tool in Database */
-
   async updateMaterialInDatabase(id: string, material: Material) {
     await updateDoc(doc(this.firestore, 'materials', id), {
       name: material.name,
@@ -153,7 +150,6 @@ export class FirebaseService implements OnDestroy {
   }
 
   /* Setter for Material and Tool objects, convert the data to the correct type */
-
   setMaterialObject(id: string, obj: any): Material {
     return {
       id: id,
