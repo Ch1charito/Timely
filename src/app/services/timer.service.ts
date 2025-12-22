@@ -7,7 +7,6 @@ export class TimerService {
   hours = 0;
   minutes = 0;
   seconds = 0;
-
   isRunning = false;
   private intervalId: any;
 
