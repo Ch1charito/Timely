@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-impressum',
-  imports: [HeaderComponent, RouterModule],
+  imports: [HeaderComponent, RouterModule, FooterComponent],
   templateUrl: './impressum.component.html',
   styleUrl: './impressum.component.scss'
 })
