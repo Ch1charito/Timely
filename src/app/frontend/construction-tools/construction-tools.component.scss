@@ -1,115 +1,58 @@
-.main{
-    padding-left: 10rem;       
-    padding-right: 10rem;      
-    display: flex;             
-    flex: 1 1 0%;              
-    justify-content: center;   
-    padding-top: 1.25rem;      
-    padding-bottom: 1.25rem;
-    .column{
-        display: flex;
-        flex-direction: column;
-        max-width: 960px;
-        flex: 1 1 0%;
-        .head{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem;
-            p{
-                color: #1b0d0d;            
-                letter-spacing: -0.01em;   
-                font-size: 32px;           
-                font-weight: 700;          
-                line-height: 1.25;         
-                min-width: 18rem;
-            }
-            button{
-                border: none;
-                background-color: #f3e7e7;
-                cursor: pointer;
-                border-radius: 0.5rem;
-                width: 2.5rem;
-                height: 2.5rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 0;
-                &:hover {
-                    background-color: #e6dede;
-                }
-                svg {
-                    width: 1rem;
-                    height: 1rem;
-                    color: #1b0d0d;
-                }              
-            }
-        }
-        .table-one {
-            table {
-                width: 100%;
-                border: 1px solid #e7cfcf;
-                border-radius: 8px;
-                overflow: hidden;
-                thead {
-                background: #fcf8f8;
-                th {
-                    padding: 12px 16px;
-                    text-align: left;
-                    font-weight: 500;
-                    color: #1b0d0d;
-                }
-                }
-                tbody {
-                tr {
-                    border-top: 1px solid #e7cfcf;
-                    height: 72px;
-                    td {
-                    padding: 8px 16px;
-                    font-size: 0.875rem;
-                    color: #1b0d0d;
-                    }
-                }         
-                }
-            }
-            .switch {
-                position: relative;
-                display: inline-block;
-                width: 80px;
-                height: 28px;
-                input {
-                    opacity: 0;
-                    width: 0;
-                    height: 0;
-                }
-                .slider {
-                    position: absolute;
-                    cursor: pointer;
-                    top: 0; left: 0;
-                    right: 0; bottom: 0;
-                    border-radius: 14px;
-                    color: white;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 0.75rem;
-                    font-weight: 500;
-                    transition: background 0.3s;
-                }
-                .slider.in-use {
-                    background-color: #e74c3c; 
-                }
-                .slider.available {
-                    background-color: #2ecc71; 
-                }
-            }
-        }
+.col-description {
+    @media (max-width: 576px) {
+        display: none;
     }
 }
-.resp{
-    @media(max-width:500px){
+
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+
+    input {
         display: none;
+    }
+
+    .toggle-slider {
+        position: relative;
+        width: 2.75rem;
+        height: 1.5rem;
+        background-color: var(--color-border-strong);
+        border-radius: 9999px;
+        transition: background-color var(--transition-base);
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 1.125rem;
+            height: 1.125rem;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform var(--transition-base);
+        }
+    }
+
+    input:checked + .toggle-slider {
+        background-color: var(--color-accent);
+
+        &::after {
+            transform: translateX(1.25rem);
+        }
+    }
+
+    .toggle-label {
+        font-size: 0.8125rem;
+        font-weight: 500;
+    }
+
+    .toggle-active {
+        color: var(--color-accent);
+    }
+
+    .toggle-inactive {
+        color: var(--color-text-muted);
     }
 }

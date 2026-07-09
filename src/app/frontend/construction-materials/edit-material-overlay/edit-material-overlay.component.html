@@ -1,25 +1,36 @@
-<div class="overlay" *ngIf="editingMaterial">
+@if (editingMaterial) {
+<div class="overlay">
     <div class="overlay-content">
-        <button class="close-btn" (click)="onClose()">✖</button>
+        <button class="overlay-close" (click)="onClose()">
+            <span class="material-icons">close</span>
+        </button>
+        <h3 class="overlay-title">Edit Material</h3>
         <form #materialForm="ngForm" (ngSubmit)="saveEdit()">
-            <label>
-                <p>Material</p>
-                <input type="text" name="name" required [(ngModel)]="editingMaterial.name"/>
-            </label>
-            <label>
-                <p>Quantity</p>
-                <input type="number" name="quantity" min="0" required [(ngModel)]="editingMaterial.quantity"/>
-            </label>
-            <label>
-                <p>Unit</p>
-                <input type="text" name="unit" [(ngModel)]="editingMaterial.unit"/>
-            </label>
-            <label>
-                <p>Category</p>
-                <input type="text" name="category" [(ngModel)]="editingMaterial.category"/>
-            </label>
-            <button type="submit" class="save-btn">Save</button>
-            <button type="button" class="cancel-btn" (click)="onClose()">Cancel</button>
+            <div class="form-section">
+                <div class="form-group">
+                    <label class="form-label">Material</label>
+                    <input class="form-input" type="text" name="name" required [(ngModel)]="editingMaterial.name"/>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Quantity</label>
+                        <input class="form-input" type="number" name="quantity" min="0" required [(ngModel)]="editingMaterial.quantity"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Unit</label>
+                        <input class="form-input" type="text" name="unit" [(ngModel)]="editingMaterial.unit"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <input class="form-input" type="text" name="category" [(ngModel)]="editingMaterial.category"/>
+                </div>
+            </div>
+            <div class="overlay-actions">
+                <button class="btn-outline" type="button" (click)="onClose()">Cancel</button>
+                <button class="btn-primary" type="submit">Save</button>
+            </div>
         </form>
     </div>
 </div>
+}

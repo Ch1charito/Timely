@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-vacation-management',
-  imports: [HeaderComponent, RouterModule, FormsModule, CommonModule],
+  imports: [HeaderComponent, RouterModule, FormsModule],
   templateUrl: './vacation-management.component.html',
   styleUrl: './vacation-management.component.scss'
 })

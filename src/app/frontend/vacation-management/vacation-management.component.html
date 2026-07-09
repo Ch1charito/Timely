@@ -1,91 +1,94 @@
 <app-header></app-header>
 <section>
     <div class="content">
-        <div class="main">
-            <div class="column">
-                <div class="head">
-                    <p>Vacation Management</p>
-                    <button routerLink="/homescreen">
+        <div class="page-main">
+            <div class="page-column">
+                <div class="page-head">
+                    <h2>Vacation Management</h2>
+                    <button class="btn-home" routerLink="/homescreen">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M8 3.293l6 6V15h-4v-4H6v4H2v-5.707l6-6z"/>
                             <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1-1.414 1.414L8 2.414 2.707 8.207A1 1 0 0 1 1.293 6.793l6-6z"/>
                         </svg>
                     </button>
                 </div>
-                <div class="feedback">
-                    <div class="container">
-                        <p class="container-header">Total vacation days</p>
-                        <p class="container-info">27</p>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <span class="stat-label">Total vacation days</span>
+                        <span class="stat-value">27</span>
                     </div>
-                    <div class="container">
-                        <p class="container-header">Remaining vacation days</p>
-                        <p class="container-info">{{ remainingDays }}</p>
+                    <div class="stat-card">
+                        <span class="stat-label">Remaining</span>
+                        <span class="stat-value stat-success">{{ remainingDays }}</span>
                     </div>
-                    <div class="container">
-                        <p class="container-header">Days already taken</p>
-                        <p class="container-info">{{ daysAlreadyTaken }}</p>
+                    <div class="stat-card">
+                        <span class="stat-label">Already taken</span>
+                        <span class="stat-value stat-warning">{{ daysAlreadyTaken }}</span>
                     </div>
                 </div>
+
                 <form #vacForm="ngForm" (ngSubmit)="submitVacation(vacForm)">
                     <div class="form-section">
-                        <div class="input-time">
-                            <label class="label">
-                                <p class="label-header">Start Date</p>
-                                <input class="label-input" type="date" name="vacStart" required [(ngModel)]="vacation.vacStart" #startCtrl="ngModel"/>
-                                <small class="error" *ngIf="startCtrl.invalid && startCtrl.touched">
-                                    Start Date is required
-                                </small>
-                            </label>
-                            <label class="label">
-                                <p class="label-header">End Date</p>
-                                <input class="label-input" type="date" name="vacEnd" required [(ngModel)]="vacation.vacEnd" #endCtrl="ngModel"/>
-                                <small class="error" *ngIf="endCtrl.invalid && endCtrl.touched">
-                                    End Date is required
-                                </small>
-                            </label>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Start Date</label>
+                                <input class="form-input" type="date" name="vacStart" required [(ngModel)]="vacation.vacStart" #startCtrl="ngModel"/>
+                                @if (startCtrl.invalid && startCtrl.touched) {
+                                    <small class="form-error">Start date is required</small>
+                                }
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">End Date</label>
+                                <input class="form-input" type="date" name="vacEnd" required [(ngModel)]="vacation.vacEnd" #endCtrl="ngModel"/>
+                                @if (endCtrl.invalid && endCtrl.touched) {
+                                    <small class="form-error">End date is required</small>
+                                }
+                            </div>
                         </div>
-                        <label class="input-days">
-                            <p class="days-header">Days Needed</p>
-                            <input class="days-input" type="number" min="1" placeholder="1" name="daysNeeded" required [(ngModel)]="vacation.daysNeeded" #daysCtrl="ngModel"/>
-                            <small class="error" *ngIf="daysCtrl.invalid && daysCtrl.touched">
-                                Please enter number of days (min 1)
-                            </small>
-                        </label>
-                        <label class="input-reason">
-                            <p class="reason-header">Reason</p>
-                            <textarea class="reason-text" placeholder="Add reason" name="reason" required [(ngModel)]="vacation.reason" #reasonCtrl="ngModel"></textarea>
-                            <small class="error" *ngIf="reasonCtrl.invalid && reasonCtrl.touched">
-                                Reason is required
-                            </small>
-                        </label>
+                        <div class="form-group">
+                            <label class="form-label">Days Needed</label>
+                            <input class="form-input" type="number" min="1" placeholder="1" name="daysNeeded" required [(ngModel)]="vacation.daysNeeded" #daysCtrl="ngModel"/>
+                            @if (daysCtrl.invalid && daysCtrl.touched) {
+                                <small class="form-error">Please enter number of days (min 1)</small>
+                            }
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Reason</label>
+                            <textarea class="form-input" placeholder="Add reason" name="reason" required [(ngModel)]="vacation.reason" #reasonCtrl="ngModel"></textarea>
+                            @if (reasonCtrl.invalid && reasonCtrl.touched) {
+                                <small class="form-error">Reason is required</small>
+                            }
+                        </div>
                     </div>
-                    <div class="form-btn">
-                        <button class="request-btn" type="submit" [disabled]="vacForm.invalid">
-                            <span>Request Vacation</span>
-                        </button>
+                    <div class="form-actions">
+                        <button class="btn-primary" type="submit" [disabled]="vacForm.invalid">Request Vacation</button>
                     </div>
                 </form>
-                <div class="table-one">
+
+                <div class="table-container">
                     <table>
                         <thead>
                             <tr>
                                 <th>Duration</th>
                                 <th>Reason</th>
-                                <th>Approved</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @for (item of firebaseService.vacation; track item.id){
-                                <tr>
-                                    <td>{{ item.vacStart }} to {{ item.vacEnd }}</td>
-                                    <td>{{ item.reason }}</td>
-                                    <td>
-                                        <span *ngIf="item.approved">✔️</span>
-                                        <span *ngIf="!item.approved">❌</span>
-                                    </td>
-                                </tr>
+                            @for (item of firebaseService.vacation; track item.id) {
+                            <tr>
+                                <td>{{ item.vacStart }} to {{ item.vacEnd }}</td>
+                                <td>{{ item.reason }}</td>
+                                <td>
+                                    @if (item.approved) {
+                                        <span class="badge-success">Approved</span>
+                                    } @else {
+                                        <span class="badge-danger">Pending</span>
+                                    }
+                                </td>
+                            </tr>
                             }
-                            
                         </tbody>
                     </table>
                 </div>

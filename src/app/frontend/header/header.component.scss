@@ -1,48 +1,41 @@
-header{
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+header {
+    background-color: var(--color-primary);
     position: sticky;
     top: 0;
-    .content{
-        .header-content{
-            max-width: 100%;          
-            margin-left: auto;        
-            margin-right: auto;
-            padding-left: 1.5rem;     
-            padding-right: 1.5rem;
-            padding-top: 1rem;        
-            padding-bottom: 1rem;
-            display: flex;            
-            justify-content: space-between; 
+    z-index: 50;
+
+    .header-content {
+        padding: var(--spacing-md) var(--spacing-lg);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            display: flex;
             align-items: center;
-            .logo-and-headline{
-                display: flex;
-                align-items: center;
-                cursor: pointer;
-                .logo-headline{
-                    font-size: 1.5rem;   
-                    font-weight: 700;    
-                    color: #1f2937;      
-                    margin-left: 0.5rem; 
-                }
+            gap: var(--spacing-sm);
+            cursor: pointer;
+
+            .material-icons {
+                color: var(--color-accent);
+                font-size: 1.75rem;
             }
-            .logout-btn{
-                background-color: #dc2626;
-                color: #ffffff;
-                font-weight: 600;
-                padding-top: 0.5rem;
-                padding-bottom: 0.5rem;
-                padding-left: 1rem;
-                padding-right: 1rem;
-                border-radius: 0.5rem;
-                display: flex;
-                align-items: center;
-                transition: background-color 0.2s;
-                &:hover{
-                    background-color: #ef4444;
-                    cursor: pointer;
-                }
-            }     
+
+            h1 {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: var(--color-text-white);
+                letter-spacing: -0.01em;
+            }
+        }
+
+        .btn-danger {
+            font-size: 0.8125rem;
+            padding: 0.5rem 1rem;
+
+            .material-icons {
+                font-size: 1.125rem;
+            }
         }
     }
 }

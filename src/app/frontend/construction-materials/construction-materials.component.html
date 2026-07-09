@@ -1,30 +1,36 @@
 <app-header></app-header>
 <section>
     <div class="content">
-        <div class="main">
-            <div class="column">
-                <div class="head">
-                    <p>Construction Materials</p>
-                    <button routerLink="/homescreen">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M8 3.293l6 6V15h-4v-4H6v4H2v-5.707l6-6z"/>
-                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1-1.414 1.414L8 2.414 2.707 8.207A1 1 0 0 1 1.293 6.793l6-6z"/>
-                        </svg>
-                    </button>
+        <div class="page-main">
+            <div class="page-column">
+                <div class="page-head">
+                    <h2>Construction Materials</h2>
+                    <div class="head-actions">
+                        <button class="btn-success" (click)="openAddOverlay()">+ Add Material</button>
+                        <button class="btn-home" routerLink="/homescreen">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 3.293l6 6V15h-4v-4H6v4H2v-5.707l6-6z"/>
+                                <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1-1.414 1.414L8 2.414 2.707 8.207A1 1 0 0 1 1.293 6.793l6-6z"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <div class="add">
-                    <button (click)="openAddOverlay()">+ Add Material</button>
-                </div>
-                <app-add-material-overlay *ngIf="showAddOverlay" (close)="closeAddOverlay()"></app-add-material-overlay>
-                <app-edit-material-overlay *ngIf="showEditOverlay" [editingMaterial]="editingMaterial" (close)="closeEditOverlay()"></app-edit-material-overlay>
-                <div class="table-one">
+
+                @if (showAddOverlay) {
+                    <app-add-material-overlay (close)="closeAddOverlay()"></app-add-material-overlay>
+                }
+                @if (showEditOverlay) {
+                    <app-edit-material-overlay [editingMaterial]="editingMaterial" (close)="closeEditOverlay()"></app-edit-material-overlay>
+                }
+
+                <div class="table-container">
                     <table>
                         <thead>
                             <tr>
-                            <th>Material</th>
-                            <th>Quantity</th>
-                            <th>Unit</th>
-                            <th>Actions</th>
+                                <th>Material</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,12 +40,12 @@
                                 <td>{{ item.quantity }}</td>
                                 <td>{{ item.unit }}</td>
                                 <td class="actions">
-                                <button class="icon-btn" (click)="openEditOverlay(item)">
-                                    ✏️
-                                </button>
-                                <button class="icon-btn" (click)="deleteMaterial(item.id)">
-                                    🗑️
-                                </button>
+                                    <button class="btn-icon" (click)="openEditOverlay(item)">
+                                        <span class="material-icons">edit</span>
+                                    </button>
+                                    <button class="btn-icon btn-icon-danger" (click)="deleteMaterial(item.id)">
+                                        <span class="material-icons">delete</span>
+                                    </button>
                                 </td>
                             </tr>
                             }

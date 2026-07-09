@@ -1,41 +1,35 @@
 <app-header></app-header>
 <section>
     <div class="content">
-        <div class="main">
-            <div class="column">
-                <div class="head">
-                    <p>Time Tracking</p>
-                    <button routerLink="/homescreen">
+        <div class="page-main">
+            <div class="page-column">
+                <div class="page-head">
+                    <h2>Time Tracking</h2>
+                    <button class="btn-home" routerLink="/homescreen">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M8 3.293l6 6V15h-4v-4H6v4H2v-5.707l6-6z"/>
                             <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1-1.414 1.414L8 2.414 2.707 8.207A1 1 0 0 1 1.293 6.793l6-6z"/>
                         </svg>
                     </button>
                 </div>
-                <div class="center-tracking">
-                    <div class="timer">
+
+                <div class="timer-section">
+                    <div class="timer-display">
                         {{ timerService.formattedTime }}
                     </div>
-                </div>
-                <div class="center">
-                    <div class="btn-area">
-                        <button class="start-btn" (click)="startTimer()">
-                            <span>Start Work</span>
-                        </button>
-                        <button class="stop-btn" (click)="stopTimer()">
-                            <span>Pause Work</span>
-                        </button>
-                        <button class="end-btn" (click)="endWork()">
-                            <span>End Work</span>
-                        </button>
+                    <div class="timer-actions">
+                        <button class="btn-success" (click)="startTimer()">Start Work</button>
+                        <button class="btn-warning" (click)="stopTimer()">Pause Work</button>
+                        <button class="btn-danger" (click)="endWork()">End Work</button>
                     </div>
                 </div>
-                <div class="table-one">
+
+                <div class="table-container">
                     <table>
                         <thead>
                             <tr>
-                            <th>Date</th>
-                            <th>Worktime</th>
+                                <th>Date</th>
+                                <th>Worktime</th>
                             </tr>
                         </thead>
                         <tbody>

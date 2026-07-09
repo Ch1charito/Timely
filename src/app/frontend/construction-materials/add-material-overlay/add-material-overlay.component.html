@@ -1,36 +1,43 @@
 <div class="overlay">
     <div class="overlay-content">
-        <button class="close-btn" (click)="onClose()">✖</button>
+        <button class="overlay-close" (click)="onClose()">
+            <span class="material-icons">close</span>
+        </button>
+        <h3 class="overlay-title">Add Material</h3>
         <form #materialForm="ngForm" (ngSubmit)="submitMaterial(materialForm)">
-            <label>
-                <p>Material</p>
-                <input type="text" name="name" required [(ngModel)]="material.name" #nameCtrl="ngModel"/>
-                <small class="error" *ngIf="nameCtrl.invalid && nameCtrl.touched">
-                    Material is required
-                </small>
-            </label>
-            <label>
-                <p>Quantity</p>
-                <input type="number" name="quantity" min="0" required [(ngModel)]="material.quantity" #qtyCtrl="ngModel"/>
-                <small class="error" *ngIf="qtyCtrl.invalid && qtyCtrl.touched">
-                    Quantity is required
-                </small>
-            </label>
-            <label>
-                <p>Unit</p>
-                <input type="text" name="unit" required [(ngModel)]="material.unit" #unitCtrl="ngModel"/>
-                <small class="error" *ngIf="unitCtrl.invalid && unitCtrl.touched">
-                    Unit is required
-                </small>
-            </label>
-            <label>
-                <p>Category</p>
-                <input type="text" name="category" required [(ngModel)]="material.category" #catCtrl="ngModel"/>
-                <small class="error" *ngIf="catCtrl.invalid && catCtrl.touched">
-                    Category is required
-                </small>
-            </label>
-            <button type="submit" [disabled]="materialForm.invalid">Add Material</button>
+            <div class="form-section">
+                <div class="form-group">
+                    <label class="form-label">Material</label>
+                    <input class="form-input" type="text" name="name" required [(ngModel)]="material.name" #nameCtrl="ngModel"/>
+                    @if (nameCtrl.invalid && nameCtrl.touched) {
+                        <small class="form-error">Material is required</small>
+                    }
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Quantity</label>
+                        <input class="form-input" type="number" name="quantity" min="0" required [(ngModel)]="material.quantity" #qtyCtrl="ngModel"/>
+                        @if (qtyCtrl.invalid && qtyCtrl.touched) {
+                            <small class="form-error">Quantity is required</small>
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Unit</label>
+                        <input class="form-input" type="text" name="unit" required [(ngModel)]="material.unit" #unitCtrl="ngModel"/>
+                        @if (unitCtrl.invalid && unitCtrl.touched) {
+                            <small class="form-error">Unit is required</small>
+                        }
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <input class="form-input" type="text" name="category" required [(ngModel)]="material.category" #catCtrl="ngModel"/>
+                    @if (catCtrl.invalid && catCtrl.touched) {
+                        <small class="form-error">Category is required</small>
+                    }
+                </div>
+            </div>
+            <button class="btn-primary" type="submit" [disabled]="materialForm.invalid" style="width: 100%;">Add Material</button>
         </form>
     </div>
 </div>

@@ -1,23 +1,33 @@
 <app-header></app-header>
 <section>
     <div class="content">
-        <div class="main">
-            <div class="grid">
-                <div class="grid-item" routerLink="/time">
-                    <span class="material-icons text-blue-500 text-6xl mb-4">schedule</span>
-                    <h2 class="description">Time Tracking</h2>
+        <div class="page-main">
+            <div class="page-column">
+                <div class="welcome">
+                    <h2>Dashboard</h2>
+                    <p>What would you like to manage today?</p>
                 </div>
-                <div class="grid-item" routerLink="/vacation">
-                    <span class="material-icons text-green-500 text-6xl mb-4">event_available</span>
-                    <h2 class="description">Vacation Management</h2>
-                </div>
-                <div class="grid-item" routerLink="/materials">
-                    <span class="material-icons text-yellow-500 text-6xl mb-4">inventory_2</span>
-                    <h2 class="description">Construction Materials</h2>
-                </div>
-                <div class="grid-item" routerLink="/tools">
-                    <span class="material-icons text-purple-500 text-6xl mb-4">construction</span>
-                    <h2 class="description">Construction Tools</h2>
+                <div class="grid">
+                    <div class="grid-item" routerLink="/time">
+                        <span class="material-icons icon-blue">schedule</span>
+                        <h3>Time Tracking</h3>
+                        <p>Record and manage work hours</p>
+                    </div>
+                    <div class="grid-item" routerLink="/vacation">
+                        <span class="material-icons icon-success">event_available</span>
+                        <h3>Vacation Management</h3>
+                        <p>Request and track vacation days</p>
+                    </div>
+                    <div class="grid-item" routerLink="/materials">
+                        <span class="material-icons icon-warning">inventory_2</span>
+                        <h3>Construction Materials</h3>
+                        <p>Manage material inventory</p>
+                    </div>
+                    <div class="grid-item" routerLink="/tools">
+                        <span class="material-icons icon-purple">construction</span>
+                        <h3>Construction Tools</h3>
+                        <p>Track tool availability</p>
+                    </div>
                 </div>
             </div>
         </div>

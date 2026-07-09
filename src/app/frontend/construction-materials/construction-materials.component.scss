@@ -1,119 +1,20 @@
-.main{
-    padding-left: 10rem;       
-    padding-right: 10rem;      
-    display: flex;             
-    flex: 1 1 0%;              
-    justify-content: center;   
-    padding-top: 1.25rem;      
-    padding-bottom: 1.25rem;
-    .column{
-        display: flex;
-        flex-direction: column;
-        max-width: 960px;
-        flex: 1 1 0%;
-        .head{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem;
-            p{
-                color: #1b0d0d;            
-                letter-spacing: -0.01em;   
-                font-size: 32px;           
-                font-weight: 700;          
-                line-height: 1.25;         
-                min-width: 18rem;
-            }
-            button{
-                border: none;
-                background-color: #f3e7e7;
-                cursor: pointer;
-                border-radius: 0.5rem;
-                width: 2.5rem;
-                height: 2.5rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 0;
-                &:hover {
-                    background-color: #e6dede;
-                }
-                svg {
-                    width: 1rem;
-                    height: 1rem;
-                    color: #1b0d0d;
-                }              
-            }
-        }
-        .add{
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-            padding-bottom: 1rem;
-            button{
-                padding: 8px 16px;
-                font-size: 14px;
-                font-family: "Poppins", sans-serif;
-                font-weight: 500;
-                color: #0f3a20;                    
-                background-color: #d7f5df;         
-                border: 1px solid #b6e9c7;         
-                border-radius: 6px;                
-                cursor: pointer;
-                transition: 0.2s ease;
-                &:hover {
-                    background-color: #c6efcf;     
-                    border-color: #a1e1b8;
-                }
-            }
-        }
-        .table-one{
-            table {
-                width: 100%;
-                border: 1px solid #e7cfcf;
-                border-radius: 8px;
-                overflow: hidden;
-                thead {
-                background: #fcf8f8;
-                th {
-                    padding: 12px 16px;
-                    text-align: left;
-                    font-weight: 500;
-                    color: #1b0d0d;
-                }
-                }
-                tbody {
-                tr {
-                    border-top: 1px solid #e7cfcf;
-                    height: 72px;
-                    td {
-                    padding: 8px 16px;
-                    font-size: 0.875rem;
-                    color: #1b0d0d;
-                    @media(max-width:435px){
-                        padding: 8px 0px;
-                    }
-                    .icon-btn {
-                        background: none; 
-                        border: none;
-                        border-radius: 4px;
-                        padding: 6px;
-                        cursor: pointer;
-                        transition: color 0.2s, transform 0.1s;
-                        &:hover {
-                            background: rgba(0,0,0,0.05);
-                            transform: scale(1.1);
-                        }
-                        &:focus {
-                            outline: none;
-                        }
-                        }
-                    }
-                }         
-                }
-            }
-        }
+.head-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.actions {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.btn-icon-danger {
+    .material-icons {
+        color: var(--color-text-muted);
+    }
+
+    &:hover .material-icons {
+        color: var(--color-danger);
     }
 }
