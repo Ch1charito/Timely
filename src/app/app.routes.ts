@@ -8,16 +8,16 @@ import { ConstructionToolsComponent } from './frontend/construction-tools/constr
 import { ImpressumComponent } from './frontend/impressum/impressum.component';
 import { PrivacyPolicyComponent } from './frontend/privacy-policy/privacy-policy.component';
 import { NotFoundComponent } from './frontend/not-found/not-found.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
-    {path: 'login', component: LoginComponent},
-    {path: 'homescreen', component: HomescreenComponent },
-    {path: 'time', component: TimeRecordingComponent},
-    {path: 'vacation', component: VacationManagementComponent},
-    {path: 'materials', component: ConstructionMaterialsComponent},
-    {path: 'tools', component: ConstructionToolsComponent},
-    {path: 'impressum', component: ImpressumComponent},
-    {path: 'privacy-policy', component: PrivacyPolicyComponent},
-    { path: '**', component: NotFoundComponent }
+  { path: '', component: LoginComponent },
+  { path: 'homescreen', component: HomescreenComponent, canActivate: [authGuard] },
+  { path: 'time', component: TimeRecordingComponent, canActivate: [authGuard] },
+  { path: 'vacation', component: VacationManagementComponent, canActivate: [authGuard] },
+  { path: 'materials', component: ConstructionMaterialsComponent, canActivate: [authGuard] },
+  { path: 'tools', component: ConstructionToolsComponent, canActivate: [authGuard] },
+  { path: 'impressum', component: ImpressumComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: '**', component: NotFoundComponent }
 ];
