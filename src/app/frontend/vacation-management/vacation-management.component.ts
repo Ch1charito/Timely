@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FirebaseService } from '../../services/firebase.service';
 import { Vacation } from '../../interfaces/vacation.interface';
 import { FormsModule, NgForm } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-vacation-management',
@@ -23,18 +23,13 @@ export class VacationManagementComponent {
   }
 
   submitVacation(form: NgForm) {
-    if (!form.valid) {
-      console.warn('Form invalid!');
+  if (!form.valid) {
+    console.warn('Form invalid!');
     return;
-    }
-    this.vacation.vacStart = this.vacation.vacStart;  
-    this.vacation.vacEnd = this.vacation.vacEnd;
-    this.vacation.daysNeeded = this.vacation.daysNeeded;
-    this.vacation.reason = this.vacation.reason;
-    this.vacation.approved = false;
-    this.firebaseService.addVacationToDatabase(this.vacation);
-    form.resetForm();
-    this.clearInputFields();
+  }
+  this.firebaseService.addVacationToDatabase(this.vacation);
+  form.resetForm();
+  this.clearInputFields();
   }
 
   clearInputFields() {

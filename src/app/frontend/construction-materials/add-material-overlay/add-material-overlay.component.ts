@@ -2,11 +2,10 @@ import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { FirebaseService } from '../../../services/firebase.service';
 import { Material } from '../../../interfaces/material.interface';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-add-material-overlay',
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule],
   templateUrl: './add-material-overlay.component.html',
   styleUrl: './add-material-overlay.component.scss'
 })

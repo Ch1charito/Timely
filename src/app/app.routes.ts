@@ -7,6 +7,7 @@ import { ConstructionMaterialsComponent } from './frontend/construction-material
 import { ConstructionToolsComponent } from './frontend/construction-tools/construction-tools.component';
 import { ImpressumComponent } from './frontend/impressum/impressum.component';
 import { PrivacyPolicyComponent } from './frontend/privacy-policy/privacy-policy.component';
+import { NotFoundComponent } from './frontend/not-found/not-found.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,5 +18,6 @@ export const routes: Routes = [
     {path: 'materials', component: ConstructionMaterialsComponent},
     {path: 'tools', component: ConstructionToolsComponent},
     {path: 'impressum', component: ImpressumComponent},
-    {path: 'privacy-policy', component: PrivacyPolicyComponent}
+    {path: 'privacy-policy', component: PrivacyPolicyComponent},
+    { path: '**', component: NotFoundComponent }
 ];

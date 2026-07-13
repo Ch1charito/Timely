@@ -3,11 +3,10 @@ import { HeaderComponent } from "../header/header.component";
 import { RouterModule } from '@angular/router';
 import { FirebaseService } from '../../services/firebase.service';
 import { Tool } from '../../interfaces/tool.interface';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-construction-tools',
-  imports: [HeaderComponent, RouterModule, CommonModule],
+  imports: [HeaderComponent, RouterModule],
   templateUrl: './construction-tools.component.html',
   styleUrl: './construction-tools.component.scss'
 })
