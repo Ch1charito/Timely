@@ -1,22 +1,23 @@
-import { Injectable, inject, OnDestroy } from '@angular/core';
+import { Injectable, inject, OnDestroy, signal } from '@angular/core';
 import { Firestore, addDoc, collection, onSnapshot } from '@angular/fire/firestore';
 import { Worksession } from '../interfaces/worksession.interface';
 
 @Injectable({ providedIn: 'root' })
 export class WorksessionService implements OnDestroy {
   private firestore = inject(Firestore);
-  worksessions: Worksession[] = [];
+  worksessions = signal<Worksession[]>([]);
   private unsubscribe: () => void;
 
   constructor() {
     this.unsubscribe = onSnapshot(
       collection(this.firestore, 'worksession'),
       (snapshot) => {
-        this.worksessions = [];
+        const items: Worksession[] = [];
         snapshot.forEach((element) => {
-          this.worksessions.push(this.mapWorksession(element.id, element.data()));
+          items.push(this.mapWorksession(element.id, element.data()));
         });
-        this.sortByDate();
+        this.sortByDate(items);
+        this.worksessions.set(items);
       }
     );
   }
@@ -36,8 +37,8 @@ export class WorksessionService implements OnDestroy {
     };
   }
 
-  private sortByDate() {
-    this.worksessions.sort((a, b) => {
+  private sortByDate(items: Worksession[]) {
+    items.sort((a, b) => {
       const [dayA, monthA, yearA] = a.date.split('.').map(Number);
       const [dayB, monthB, yearB] = b.date.split('.').map(Number);
       return new Date(yearB, monthB - 1, dayB).getTime() - new Date(yearA, monthA - 1, dayA).getTime();

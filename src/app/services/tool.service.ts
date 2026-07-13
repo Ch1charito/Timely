@@ -1,21 +1,22 @@
-import { Injectable, inject, OnDestroy } from '@angular/core';
+import { Injectable, inject, OnDestroy, signal } from '@angular/core';
 import { Firestore, addDoc, collection, deleteDoc, doc, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { Tool } from '../interfaces/tool.interface';
 
 @Injectable({ providedIn: 'root' })
 export class ToolService implements OnDestroy {
   private firestore = inject(Firestore);
-  tools: Tool[] = [];
+  tools = signal<Tool[]>([]);
   private unsubscribe: () => void;
 
   constructor() {
     this.unsubscribe = onSnapshot(
       collection(this.firestore, 'tools'),
       (snapshot) => {
-        this.tools = [];
+        const items: Tool[] = [];
         snapshot.forEach((element) => {
-          this.tools.push(this.mapTool(element.id, element.data()));
+          items.push(this.mapTool(element.id, element.data()));
         });
+        this.tools.set(items);
       }
     );
   }

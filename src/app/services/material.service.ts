@@ -1,22 +1,23 @@
-import { Injectable, inject, OnDestroy } from '@angular/core';
+import { Injectable, inject, OnDestroy, signal } from '@angular/core';
 import { Firestore, addDoc, collection, deleteDoc, doc, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { Material } from '../interfaces/material.interface';
 
 @Injectable({ providedIn: 'root' })
 export class MaterialService implements OnDestroy {
   private firestore = inject(Firestore);
-  materials: Material[] = [];
+  materials = signal<Material[]>([]);
   private unsubscribe: () => void;
 
   constructor() {
     this.unsubscribe = onSnapshot(
       collection(this.firestore, 'materials'),
       (snapshot) => {
-        this.materials = [];
+        const items: Material[] = [];
         snapshot.forEach((element) => {
-          this.materials.push(this.mapMaterial(element.id, element.data()));
+          items.push(this.mapMaterial(element.id, element.data()));
         });
-        this.materials.sort((a, b) => a.name.localeCompare(b.name));
+        items.sort((a, b) => a.name.localeCompare(b.name));
+        this.materials.set(items);
       }
     );
   }

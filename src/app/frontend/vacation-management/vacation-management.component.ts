@@ -40,7 +40,7 @@ export class VacationManagementComponent {
   }
 
   get daysAlreadyTaken(): number {
-    return this.vacationService.getDaysAlreadyTaken();
+    return this.vacationService.daysAlreadyTaken();
   }
 
   get remainingDays(): number {
