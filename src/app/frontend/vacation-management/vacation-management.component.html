@@ -76,7 +76,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for (item of firebaseService.vacation; track item.id) {
+                            @for (item of vacationService.vacations; track item.id) {
                             <tr>
                                 <td>{{ item.vacStart }} to {{ item.vacEnd }}</td>
                                 <td>{{ item.reason }}</td>

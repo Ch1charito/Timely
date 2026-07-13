@@ -34,7 +34,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for (item of firebaseService.materials; track item.id) {
+                            @for (item of materialService.materials; track item.id) {
                             <tr>
                                 <td>{{ item.name }}</td>
                                 <td>{{ item.quantity }}</td>

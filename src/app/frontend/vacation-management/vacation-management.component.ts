@@ -1,10 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { RouterModule } from '@angular/router';
-import { FirebaseService } from '../../services/firebase.service';
+import { VacationService } from '../../services/vacation.service';
 import { Vacation } from '../../interfaces/vacation.interface';
 import { FormsModule, NgForm } from '@angular/forms';
-
 
 @Component({
   selector: 'app-vacation-management',
@@ -13,7 +12,7 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './vacation-management.component.scss'
 })
 export class VacationManagementComponent {
-  firebaseService = inject(FirebaseService);
+  vacationService = inject(VacationService);
   vacation: Vacation = {
     vacStart: '',
     vacEnd: '',
@@ -23,13 +22,13 @@ export class VacationManagementComponent {
   }
 
   submitVacation(form: NgForm) {
-  if (!form.valid) {
-    console.warn('Form invalid!');
-    return;
-  }
-  this.firebaseService.addVacationToDatabase(this.vacation);
-  form.resetForm();
-  this.clearInputFields();
+    if (!form.valid) {
+      console.warn('Form invalid!');
+      return;
+    }
+    this.vacationService.add(this.vacation);
+    form.resetForm();
+    this.clearInputFields();
   }
 
   clearInputFields() {
@@ -41,7 +40,7 @@ export class VacationManagementComponent {
   }
 
   get daysAlreadyTaken(): number {
-    return this.firebaseService.getDaysAlreadyTaken();
+    return this.vacationService.getDaysAlreadyTaken();
   }
 
   get remainingDays(): number {

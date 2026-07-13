@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { FirebaseService } from '../../../services/firebase.service';
+import { MaterialService } from '../../../services/material.service';
 import { Material } from '../../../interfaces/material.interface';
 
 @Component({
@@ -10,7 +10,7 @@ import { Material } from '../../../interfaces/material.interface';
   styleUrl: './add-material-overlay.component.scss'
 })
 export class AddMaterialOverlayComponent {
-  firebaseService = inject(FirebaseService);
+  materialService = inject(MaterialService);
   @Output() close = new EventEmitter<void>();
 
   material: Material = {
@@ -23,7 +23,7 @@ export class AddMaterialOverlayComponent {
 
   async submitMaterial(form: NgForm) {
     if (form.invalid) return;
-    await this.firebaseService.addMaterialToDatabase(this.material);
+    await this.materialService.add(this.material);
     this.close.emit();
   }
 

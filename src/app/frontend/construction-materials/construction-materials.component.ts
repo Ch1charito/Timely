@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { RouterModule } from '@angular/router';
-import { FirebaseService } from '../../services/firebase.service';
+import { MaterialService } from '../../services/material.service';
 import { AddMaterialOverlayComponent } from "./add-material-overlay/add-material-overlay.component";
 import { EditMaterialOverlayComponent } from "./edit-material-overlay/edit-material-overlay.component";
 import { Material } from '../../interfaces/material.interface';
@@ -13,7 +13,7 @@ import { Material } from '../../interfaces/material.interface';
   styleUrl: './construction-materials.component.scss'
 })
 export class ConstructionMaterialsComponent {
-  firebaseService = inject(FirebaseService);
+  materialService = inject(MaterialService);
   showAddOverlay: boolean = false;
   showEditOverlay: boolean = false;
   editingMaterial: Material | null = null;
@@ -37,6 +37,6 @@ export class ConstructionMaterialsComponent {
 
   deleteMaterial(id: string | undefined) {
     if (!id) return;
-    this.firebaseService.deleteMaterialFromDatabase(id);
+    this.materialService.delete(id);
   }
 }

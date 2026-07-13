@@ -1,19 +1,18 @@
 import { Component, inject } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FirebaseService } from '../../services/firebase.service';
+import { WorksessionService } from '../../services/worksession.service';
 import { TimerService } from '../../services/timer.service';
 
 @Component({
   selector: 'app-time-recording',
-  imports: [HeaderComponent, RouterModule, CommonModule],
+  imports: [HeaderComponent, RouterModule],
   templateUrl: './time-recording.component.html',
   styleUrl: './time-recording.component.scss'
 })
 export class TimeRecordingComponent {
 timerService = inject(TimerService);
-firebaseService = inject(FirebaseService);
+worksessionService = inject(WorksessionService);
 workSessions: { date: string; worktime: string }[] = [];
 
   startTimer(): void {
@@ -32,7 +31,7 @@ workSessions: { date: string; worktime: string }[] = [];
       date: formattedDate,
       worktime: this.timerService.formattedTime
     };
-    this.firebaseService.addWorksessionToDatabase(workSession);
+    this.worksessionService.add(workSession);
     this.timerService.reset();
   }
 }

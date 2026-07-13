@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { RouterModule } from '@angular/router';
-import { FirebaseService } from '../../services/firebase.service';
+import { ToolService } from '../../services/tool.service';
 import { Tool } from '../../interfaces/tool.interface';
 
 @Component({
@@ -11,11 +11,11 @@ import { Tool } from '../../interfaces/tool.interface';
   styleUrl: './construction-tools.component.scss'
 })
 export class ConstructionToolsComponent {
-  firebaseService = inject(FirebaseService);
+  toolService = inject(ToolService);
 
   toggleInUse(item: Tool) {
     item.inUse = !item.inUse;
-    this.firebaseService.updateToolInDatabase(item.id!, item);
+    this.toolService.update(item.id!, item);
   }
 
 }

@@ -23,7 +23,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for (item of firebaseService.tools; track item.id) {
+                            @for (item of toolService.tools; track item.id) {
                             <tr>
                                 <td>{{ item.name }}</td>
                                 <td class="col-description">{{ item.description }}</td>

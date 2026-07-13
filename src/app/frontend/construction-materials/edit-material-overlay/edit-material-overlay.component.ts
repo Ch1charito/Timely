@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { FirebaseService } from '../../../services/firebase.service';
+import { MaterialService } from '../../../services/material.service';
 import { Material } from '../../../interfaces/material.interface';
 
 @Component({
@@ -10,13 +10,13 @@ import { Material } from '../../../interfaces/material.interface';
   styleUrl: './edit-material-overlay.component.scss'
 })
 export class EditMaterialOverlayComponent {
-  firebaseService = inject(FirebaseService);
+  materialService = inject(MaterialService);
   @Input() editingMaterial: Material | null = null;
   @Output() close = new EventEmitter<void>();
 
   saveEdit() {
     if (!this.editingMaterial?.id) return;
-    this.firebaseService.updateMaterialInDatabase(
+    this.materialService.update(
       this.editingMaterial.id,
       this.editingMaterial
     );
